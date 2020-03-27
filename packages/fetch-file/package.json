@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@types/node-fetch": "^2.5.5",
-    "@node-novel/imagemin": "%^1.0.0",
+    "@node-novel/imagemin": "^1.0.0",
     "hash-sum": "^2.0.0",
     "upath2": "^2.1.3"
   },
