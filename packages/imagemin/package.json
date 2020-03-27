@@ -1,0 +1,62 @@
+{
+  "name": "@node-novel/imagemin",
+  "version": "1.0.0",
+  "description": "<description>",
+  "homepage": "https://github.com/bluelovers/ws-epub2/tree/master/packages/imagemin#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-epub2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-epub2.git"
+  },
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "ncu": "npx yarn-tool ncu -u",
+    "npm:publish": "npm publish",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly": "yarn run ncu && yarn run sort-package-json && yarn run test",
+    "sort-package-json": "npx yarn-tool sort",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bluebird": "*",
+    "bluebird-cancellation": "^1.0.12",
+    "ts-type": "^1.2.13"
+  },
+  "devDependencies": {
+    "@bluelovers/tsconfig": "^1.0.19",
+    "@types/bluebird": "^3.5.30",
+    "@types/imagemin": "^7.0.0",
+    "@types/imagemin-jpegtran": "^5.0.0",
+    "@types/imagemin-mozjpeg": "^8.0.0",
+    "@types/imagemin-optipng": "^5.2.0",
+    "@types/imagemin-pngquant": "^7.0.0",
+    "@types/imagemin-webp": "^5.1.0",
+    "@types/node": "^13.9.2",
+    "bluebird": "^3.7.2",
+    "bluebird-cancellation": "^1.0.12",
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-webp": "^5.1.0"
+  },
+  "peerDependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-webp": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
