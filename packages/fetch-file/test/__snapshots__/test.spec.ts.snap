@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test fetch fetch url 1`] = `
+Object {
+  "data": Any<Buffer>,
+  "ext": ".webp",
+  "mime": "image/png",
+  "name": "0ccb6d7c.webp",
+  "url": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png",
+}
+`;
