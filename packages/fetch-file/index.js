@@ -73,7 +73,7 @@ function fetchFileOrUrl(file, options) {
                 is_from_url,
             })
                 .then(buf => {
-                if (buf.length) {
+                if (buf === null || buf === void 0 ? void 0 : buf.length) {
                     _file = buf;
                 }
             })

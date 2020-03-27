@@ -128,7 +128,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 				})
 					.then(buf =>
 					{
-						if (buf.length)
+						if (buf?.length)
 						{
 							_file = buf
 						}
