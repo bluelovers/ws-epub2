@@ -50,7 +50,12 @@ function imageminPlugins(options) {
                     ...opts,
                 };
             }
-            plugins.push(require(`${name}`)(opts));
+            try {
+                plugins.push(require(`${name}`)(opts));
+            }
+            catch (e) {
+                (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(e.toString());
+            }
         }
     });
     return plugins;

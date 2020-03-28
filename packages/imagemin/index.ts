@@ -40,7 +40,7 @@ export function tryRequireResolve(name: string | keyof IOptions["imageminOptions
 	return false
 }
 
-export function imageminPlugins(options: IOptions )
+export function imageminPlugins(options: IOptions)
 {
 	let plugins: any[] = [...options?.imageminPlugins ?? []];
 
@@ -51,7 +51,8 @@ export function imageminPlugins(options: IOptions )
 		'imagemin-mozjpeg',
 		'imagemin-pngquant',
 	] as (keyof IOptions["imageminOptions"] | string)[])
-		.forEach(name => {
+		.forEach(name =>
+		{
 
 			if (options?.imageminIgnore?.includes?.(name))
 			{
@@ -80,7 +81,14 @@ export function imageminPlugins(options: IOptions )
 					}
 				}
 
-				plugins.push(require(`${name}`)(opts))
+				try
+				{
+					plugins.push(require(`${name}`)(opts))
+				}
+				catch (e)
+				{
+					options?.imageminDebug && console.error(e.toString())
+				}
 			}
 
 		})
@@ -89,7 +97,7 @@ export function imageminPlugins(options: IOptions )
 	return plugins
 }
 
-export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOptions )
+export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOptions)
 {
 	return Bluebird
 		.resolve(oldBuffer)
@@ -110,7 +118,8 @@ export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOpti
 
 			return Bluebird.resolve(pc)
 				.timeout(imageminTimeout)
-				.tapCatch(TimeoutError, (e) => {
+				.tapCatch(TimeoutError, (e) =>
+				{
 					options?.imageminDebug && console.error(`imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`)
 					pc.cancel();
 				})
@@ -124,7 +133,7 @@ export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOpti
 
 			return Promise.reject(new Error(`unknown`))
 		})
-	;
+		;
 }
 
 export default imageminBuffer
