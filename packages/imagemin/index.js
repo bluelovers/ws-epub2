@@ -8,6 +8,7 @@ const bluebird_1 = __importDefault(require("bluebird"));
 const bluebird_cancellation_1 = __importDefault(require("bluebird-cancellation"));
 const bluebird_2 = require("bluebird");
 const imagemin_1 = __importDefault(require("imagemin"));
+const logger_1 = __importDefault(require("debug-color2/logger"));
 function tryRequireResolve(name) {
     try {
         return require.resolve(name).length > 0;
@@ -70,7 +71,7 @@ function imageminBuffer(oldBuffer, options) {
         return bluebird_1.default.resolve(pc)
             .timeout(imageminTimeout)
             .tapCatch(bluebird_2.TimeoutError, (e) => {
-            (options === null || options === void 0 ? void 0 : options.imageminDebug) && console.error(`[ERROR] imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`);
+            (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(`imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`);
             pc.cancel();
         });
     })

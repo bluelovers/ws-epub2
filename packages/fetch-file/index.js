@@ -11,6 +11,7 @@ const fs_extra_1 = require("fs-extra");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
 const imagemin_1 = __importDefault(require("@node-novel/imagemin"));
+const logger_1 = __importDefault(require("debug-color2/logger"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
@@ -67,8 +68,9 @@ function fetchFileOrUrl(file, options) {
             });
         }
         if (_file && typeof window === 'undefined') {
+            const { imageminDebug = true } = options || {};
             await imagemin_1.default(_file, {
-                imageminDebug: true,
+                imageminDebug,
                 ...options,
                 is_from_url,
             })
@@ -78,12 +80,12 @@ function fetchFileOrUrl(file, options) {
                 }
             })
                 .catch(function (e) {
-                console.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', e.toString().replace(/^\s+|\s+$/, ''), file);
+                imageminDebug && logger_1.default.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', e.toString().replace(/^\s+|\s+$/, ''), file);
                 //console.error(e);
             });
         }
         if (!_file) {
-            let e = err || new ReferenceError();
+            let e = err || new ReferenceError(`未知錯誤 導致 處理資料為空`);
             // @ts-ignore
             e.data = file;
             throw e;

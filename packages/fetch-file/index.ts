@@ -7,6 +7,7 @@ import { basename, extname } from 'upath2';
 import { RequestInit as IRequestInitNodeFetch } from 'node-fetch';
 import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
+import console from 'debug-color2/logger';
 
 export interface IFiles
 {
@@ -121,8 +122,10 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 
 			if (_file && typeof window === 'undefined')
 			{
+				const { imageminDebug = true } = options || {}
+
 				await imageminBuffer(_file, {
-					imageminDebug: true,
+					imageminDebug,
 					...options,
 					is_from_url,
 				})
@@ -135,7 +138,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 					})
 					.catch(function (e)
 					{
-						console.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', e.toString().replace(/^\s+|\s+$/, ''), file);
+						imageminDebug && console.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', e.toString().replace(/^\s+|\s+$/, ''), file);
 						//console.error(e);
 					})
 				;
@@ -143,7 +146,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 
 			if (!_file)
 			{
-				let e = err || new ReferenceError();
+				let e = err || new ReferenceError(`未知錯誤 導致 處理資料為空`);
 				// @ts-ignore
 				e.data = file;
 

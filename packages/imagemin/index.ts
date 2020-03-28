@@ -8,6 +8,7 @@ import * as imageminOptipng from 'imagemin-optipng';
 import * as imageminWebp from 'imagemin-webp';
 import * as imageminMozjpeg from 'imagemin-mozjpeg';
 import { ITSResolvable } from 'ts-type';
+import console from 'debug-color2/logger';
 
 export interface IOptions
 {
@@ -110,7 +111,7 @@ export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOpti
 			return Bluebird.resolve(pc)
 				.timeout(imageminTimeout)
 				.tapCatch(TimeoutError, (e) => {
-					options?.imageminDebug && console.error(`[ERROR] imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`)
+					options?.imageminDebug && console.error(`imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`)
 					pc.cancel();
 				})
 		})
