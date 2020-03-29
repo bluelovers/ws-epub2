@@ -9,6 +9,8 @@ import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
 import console from 'debug-color2/logger';
 import imageminBufferWorker from '@node-novel/imagemin/worker';
+// @ts-ignore
+import AbortController from 'abort-controller';
 
 export interface IFiles
 {
@@ -30,6 +32,8 @@ export interface IFiles
 export interface IOptions extends IOptions2
 {
 	fetchOptions?: RequestInit & IRequestInitNodeFetch,
+
+	timeout?: number,
 }
 
 /**
@@ -58,7 +62,31 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 
 			if (!_file && file.url)
 			{
-				_file = await fetch(file.url, options?.fetchOptions)
+				let fetchOptions = {
+					timeout: options?.timeout,
+					...(options?.fetchOptions ?? {})
+				}
+
+				fetchOptions.timeout |= 0;
+				if (fetchOptions.timeout <= 0)
+				{
+					fetchOptions.timeout = 30 * 1000;
+				}
+
+				let timer: NodeJS.Timeout;
+
+				if (!fetchOptions.signal)
+				{
+					const controller = new AbortController();
+					timer = setTimeout(
+						() => controller.abort(),
+						fetchOptions.timeout,
+					);
+
+					fetchOptions.signal = controller.signal;
+				}
+
+				_file = await fetch(file.url, fetchOptions)
 					.then(function (ret)
 					{
 						//console.log(file.name, ret.type, ret.headers);
@@ -119,6 +147,8 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 						return null;
 					})
 				;
+
+				timer && clearTimeout(timer);
 			}
 
 			if (_file && typeof window === 'undefined')

@@ -12,12 +12,15 @@ const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
 const logger_1 = __importDefault(require("debug-color2/logger"));
 const worker_1 = __importDefault(require("@node-novel/imagemin/worker"));
+// @ts-ignore
+const abort_controller_1 = __importDefault(require("abort-controller"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
 function fetchFileOrUrl(file, options) {
     return bluebird_1.default.resolve(file)
         .then(async (file) => {
+        var _a;
         let _file;
         let err;
         if (file.data) {
@@ -28,7 +31,21 @@ function fetchFileOrUrl(file, options) {
             _file = await fs_extra_1.readFile(file.file);
         }
         if (!_file && file.url) {
-            _file = await cross_fetch_1.default(file.url, options === null || options === void 0 ? void 0 : options.fetchOptions)
+            let fetchOptions = {
+                timeout: options === null || options === void 0 ? void 0 : options.timeout,
+                ...((_a = options === null || options === void 0 ? void 0 : options.fetchOptions) !== null && _a !== void 0 ? _a : {})
+            };
+            fetchOptions.timeout |= 0;
+            if (fetchOptions.timeout <= 0) {
+                fetchOptions.timeout = 30 * 1000;
+            }
+            let timer;
+            if (!fetchOptions.signal) {
+                const controller = new abort_controller_1.default();
+                timer = setTimeout(() => controller.abort(), fetchOptions.timeout);
+                fetchOptions.signal = controller.signal;
+            }
+            _file = await cross_fetch_1.default(file.url, fetchOptions)
                 .then(function (ret) {
                 //console.log(file.name, ret.type, ret.headers);
                 if (!file.mime) {
@@ -66,6 +83,7 @@ function fetchFileOrUrl(file, options) {
                 err = e;
                 return null;
             });
+            timer && clearTimeout(timer);
         }
         if (_file && typeof window === 'undefined') {
             const { imageminDebug = true } = options || {};

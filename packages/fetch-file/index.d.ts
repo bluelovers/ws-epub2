@@ -16,6 +16,7 @@ export interface IFiles {
 }
 export interface IOptions extends IOptions2 {
     fetchOptions?: RequestInit & IRequestInitNodeFetch;
+    timeout?: number;
 }
 /**
  * 處理附加檔案 本地檔案 > url
