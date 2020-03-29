@@ -10,8 +10,8 @@ const file_type_1 = require("file-type");
 const fs_extra_1 = require("fs-extra");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
-const imagemin_1 = __importDefault(require("@node-novel/imagemin"));
 const logger_1 = __importDefault(require("debug-color2/logger"));
+const worker_1 = __importDefault(require("@node-novel/imagemin/worker"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
@@ -69,7 +69,7 @@ function fetchFileOrUrl(file, options) {
         }
         if (_file && typeof window === 'undefined') {
             const { imageminDebug = true } = options || {};
-            await imagemin_1.default(_file, {
+            await worker_1.default(_file, {
                 imageminDebug,
                 ...options,
                 is_from_url,

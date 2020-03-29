@@ -23,4 +23,6 @@ export interface IOptions {
 export declare function tryRequireResolve(name: string | keyof IOptions["imageminOptions"]): boolean;
 export declare function imageminPlugins(options: IOptions): any[];
 export declare function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOptions): Bluebird<Buffer>;
+export declare function isAllowedBuffer(newBuffer: any): newBuffer is Buffer;
+export declare function newError(): Error;
 export default imageminBuffer;

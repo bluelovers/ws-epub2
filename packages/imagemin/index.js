@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.imageminBuffer = exports.imageminPlugins = exports.tryRequireResolve = void 0;
+exports.newError = exports.isAllowedBuffer = exports.imageminBuffer = exports.imageminPlugins = exports.tryRequireResolve = void 0;
 const bluebird_1 = __importDefault(require("bluebird"));
 const bluebird_cancellation_1 = __importDefault(require("bluebird-cancellation"));
 const bluebird_2 = require("bluebird");
@@ -81,12 +81,20 @@ function imageminBuffer(oldBuffer, options) {
         });
     })
         .then(function (newBuffer) {
-        if (Buffer.isBuffer(newBuffer) && newBuffer.length > 0) {
+        if (isAllowedBuffer(newBuffer)) {
             return newBuffer;
         }
-        return Promise.reject(new Error(`unknown`));
+        return Promise.reject(newError());
     });
 }
 exports.imageminBuffer = imageminBuffer;
+function isAllowedBuffer(newBuffer) {
+    return (Buffer.isBuffer(newBuffer) && newBuffer.length > 0);
+}
+exports.isAllowedBuffer = isAllowedBuffer;
+function newError() {
+    return new Error(`unknown`);
+}
+exports.newError = newError;
 exports.default = imageminBuffer;
 //# sourceMappingURL=index.js.map

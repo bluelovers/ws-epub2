@@ -8,6 +8,7 @@ import { RequestInit as IRequestInitNodeFetch } from 'node-fetch';
 import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
 import console from 'debug-color2/logger';
+import imageminBufferWorker from '@node-novel/imagemin/worker';
 
 export interface IFiles
 {
@@ -124,7 +125,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 			{
 				const { imageminDebug = true } = options || {}
 
-				await imageminBuffer(_file, {
+				await imageminBufferWorker(_file, {
 					imageminDebug,
 					...options,
 					is_from_url,

@@ -126,14 +126,25 @@ export function imageminBuffer(oldBuffer: ITSResolvable<Buffer>, options?: IOpti
 		})
 		.then(function (newBuffer)
 		{
-			if (Buffer.isBuffer(newBuffer) && newBuffer.length > 0)
+			if (isAllowedBuffer(newBuffer))
 			{
 				return newBuffer
 			}
 
-			return Promise.reject(new Error(`unknown`))
+			return Promise.reject(newError())
 		})
 		;
 }
 
+export function isAllowedBuffer(newBuffer: any): newBuffer is Buffer
+{
+	return (Buffer.isBuffer(newBuffer) && newBuffer.length > 0)
+}
+
+export function newError()
+{
+	return new Error(`unknown`)
+}
+
 export default imageminBuffer
+
