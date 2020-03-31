@@ -11,6 +11,7 @@ import console from 'debug-color2/logger';
 import imageminBufferWorker from '@node-novel/imagemin/worker';
 // @ts-ignore
 import AbortController from 'abort-controller';
+import parseDataURL from 'parse-data-urls';
 
 export interface IFiles
 {
@@ -58,6 +59,31 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 			if (!_file && file.file)
 			{
 				_file = await readFile(file.file);
+			}
+
+			if (!_file && file.url)
+			{
+				/**
+				 * support data url
+				 */
+				await parseDataURL(file.url)
+					.then(data => {
+						if (!file.mime && data?.mime)
+						{
+							file.mime = data.mime
+						}
+
+						if (data?.body?.length > 0)
+						{
+							_file = data.body;
+							is_from_url = true;
+						}
+					})
+					.catch(e => {
+						err = e;
+						is_from_url = false;
+					})
+				;
 			}
 
 			if (!_file && file.url)

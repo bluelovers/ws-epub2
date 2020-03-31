@@ -1,0 +1,47 @@
+{
+  "name": "parse-data-urls",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/bluelovers/ws-epub2/tree/master/packages/parse-data-urls#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-epub2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-epub2.git"
+  },
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "npx nyc yarn run test",
+    "lint": "npx eslint **/*.ts",
+    "ncu": "npx yarn-tool ncu -u",
+    "npm:publish": "npm publish",
+    "postpublish_": "git commit -m \"chore(release): publish\" .",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
+    "sort-package-json": "npx yarn-tool sort",
+    "test": "jest",
+    "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "tsc:default": "tsc -p tsconfig.json",
+    "tsc:esm": "tsc -p tsconfig.esm.json"
+  },
+  "dependencies": {
+    "@types/whatwg-mimetype": "*",
+    "bluebird": "^3.7.2",
+    "data-urls": "^2.0.0",
+    "valid-data-url": "^2.0.0"
+  },
+  "devDependencies": {
+    "@bluelovers/tsconfig": "^1.0.19",
+    "@types/bluebird": "^3.5.30",
+    "@types/node": "^13.9.2",
+    "@types/valid-data-url": "^2.0.0",
+    "whatwg-mimetype": "^2.3.0"
+  },
+  "peerDependencies": {
+    "data-urls": "^2.0.0",
+    "whatwg-mimetype": "^2.3.0"
+  }
+}

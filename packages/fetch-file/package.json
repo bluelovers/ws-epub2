@@ -27,6 +27,7 @@
     "abort-controller": "^3.0.0",
     "debug-color2": "^1.1.7",
     "hash-sum": "^2.0.0",
+    "parse-data-urls": "^1.0.0",
     "upath2": "^2.1.3"
   },
   "devDependencies": {

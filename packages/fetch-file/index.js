@@ -14,6 +14,7 @@ const logger_1 = __importDefault(require("debug-color2/logger"));
 const worker_1 = __importDefault(require("@node-novel/imagemin/worker"));
 // @ts-ignore
 const abort_controller_1 = __importDefault(require("abort-controller"));
+const parse_data_urls_1 = __importDefault(require("parse-data-urls"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
@@ -29,6 +30,26 @@ function fetchFileOrUrl(file, options) {
         let is_from_url;
         if (!_file && file.file) {
             _file = await fs_extra_1.readFile(file.file);
+        }
+        if (!_file && file.url) {
+            /**
+             * support data url
+             */
+            await parse_data_urls_1.default(file.url)
+                .then(data => {
+                var _a;
+                if (!file.mime && (data === null || data === void 0 ? void 0 : data.mime)) {
+                    file.mime = data.mime;
+                }
+                if (((_a = data === null || data === void 0 ? void 0 : data.body) === null || _a === void 0 ? void 0 : _a.length) > 0) {
+                    _file = data.body;
+                    is_from_url = true;
+                }
+            })
+                .catch(e => {
+                err = e;
+                is_from_url = false;
+            });
         }
         if (!_file && file.url) {
             let fetchOptions = {
