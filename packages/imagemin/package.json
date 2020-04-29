@@ -26,12 +26,11 @@
   },
   "dependencies": {
     "bluebird": "*",
-    "bluebird-cancellation": "^1.0.12",
+    "bluebird-cancellation": "^1.0.13",
     "debug-color2": "^1.1.7",
-    "ts-type": "^1.2.13"
+    "ts-type": "^1.2.15"
   },
   "devDependencies": {
-    "@bluelovers/tsconfig": "^1.0.19",
     "@types/bluebird": "^3.5.30",
     "@types/imagemin": "^7.0.0",
     "@types/imagemin-jpegtran": "^5.0.0",
@@ -39,9 +38,8 @@
     "@types/imagemin-optipng": "^5.2.0",
     "@types/imagemin-pngquant": "^7.0.0",
     "@types/imagemin-webp": "^5.1.0",
-    "@types/node": "^13.9.5",
     "bluebird": "^3.7.2",
-    "bluebird-cancellation": "^1.0.12",
+    "bluebird-cancellation": "^1.0.13",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-mozjpeg": "^8.0.0",

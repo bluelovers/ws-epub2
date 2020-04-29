@@ -14,11 +14,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@bluelovers/tsconfig": "*",
-    "@types/jest": "^25.1.4",
+    "@bluelovers/tsconfig": "^1.0.19",
+    "@types/jest": "^25.2.1",
     "@types/node": "*",
-    "jest": "^25.2.3",
-    "ts-jest": "^25.2.1"
+    "jest": "^25.5.1",
+    "ts-jest": "^25.4.0"
   },
   "peerDependencies": {
     "lerna": "^3"
