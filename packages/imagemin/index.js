@@ -9,11 +9,14 @@ const bluebird_cancellation_1 = __importDefault(require("bluebird-cancellation")
 const bluebird_2 = require("bluebird");
 const imagemin_1 = __importDefault(require("imagemin"));
 const logger_1 = __importDefault(require("debug-color2/logger"));
+const skipRequireSet = new Set();
 function tryRequireResolve(name) {
-    try {
-        return require.resolve(name).length > 0;
-    }
-    catch (e) {
+    if (!skipRequireSet.has(name)) {
+        try {
+            return require.resolve(name).length > 0;
+        }
+        catch (e) {
+        }
     }
     return false;
 }
@@ -54,6 +57,7 @@ function imageminPlugins(options) {
                 plugins.push(require(`${name}`)(opts));
             }
             catch (e) {
+                skipRequireSet.add(name);
                 (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(e.toString());
             }
         }

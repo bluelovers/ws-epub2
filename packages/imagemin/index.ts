@@ -26,15 +26,20 @@ export interface IOptions
 	imageminTimeout?: number,
 }
 
+const skipRequireSet = new Set<string>();
+
 export function tryRequireResolve(name: string | keyof IOptions["imageminOptions"])
 {
-	try
+	if (!skipRequireSet.has(name))
 	{
-		return require.resolve(name).length > 0
-	}
-	catch (e)
-	{
+		try
+		{
+			return require.resolve(name).length > 0
+		}
+		catch (e)
+		{
 
+		}
 	}
 
 	return false
@@ -87,6 +92,7 @@ export function imageminPlugins(options: IOptions)
 				}
 				catch (e)
 				{
+					skipRequireSet.add(name);
 					options?.imageminDebug && console.error(e.toString())
 				}
 			}
