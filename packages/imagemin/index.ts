@@ -93,7 +93,7 @@ export function imageminPlugins(options: IOptions)
 				catch (e)
 				{
 					skipRequireSet.add(name);
-					options?.imageminDebug && console.trace(e.toString())
+					options?.imageminDebug && console.error(e)
 				}
 			}
 

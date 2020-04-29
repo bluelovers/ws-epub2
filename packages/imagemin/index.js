@@ -59,7 +59,7 @@ function imageminPlugins(options) {
             }
             catch (e) {
                 skipRequireSet.add(name);
-                (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.trace(e.toString());
+                (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(e);
             }
         }
     });
