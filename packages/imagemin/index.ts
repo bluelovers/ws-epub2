@@ -38,7 +38,7 @@ export function tryRequireResolve(name: string | keyof IOptions["imageminOptions
 		}
 		catch (e)
 		{
-
+			skipRequireSet.add(name);
 		}
 	}
 
@@ -93,7 +93,7 @@ export function imageminPlugins(options: IOptions)
 				catch (e)
 				{
 					skipRequireSet.add(name);
-					options?.imageminDebug && console.error(e.toString())
+					options?.imageminDebug && console.trace(e.toString())
 				}
 			}
 
