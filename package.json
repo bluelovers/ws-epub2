@@ -6,22 +6,32 @@
     "packages/*"
   ],
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lerna:publish": "npx lerna publish",
     "lerna:publish:yes": "npx lerna publish --yes --cd-version patch",
     "prepublish:lockfile": "npx sync-lockfile .",
-    "ncu": "npx yarn-tool ncu -u",
-    "sort-package-json": "npx yarn-tool sort",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ncu": "npx yarn-tool ncu -u && npx yarn-tool ws exec yarn-tool ncu -- -u",
+    "sort-package-json": "npx yarn-tool sort && npx yarn-tool ws exec yarn-tool sort"
   },
+  "resolutions": {},
   "devDependencies": {
     "@bluelovers/tsconfig": "^1.0.19",
-    "@types/jest": "^25.2.1",
+    "@types/bluebird": "^3.5.32",
+    "@types/fs-extra": "^9.0.1",
+    "@types/hash-sum": "^1.0.0",
+    "@types/jest": "^25.2.3",
     "@types/node": "*",
-    "jest": "^25.5.1",
-    "ts-jest": "^25.4.0"
+    "@types/valid-data-url": "^2.0.0",
+    "bluebird": "^3.7.2",
+    "bluebird-cancellation": "^1.0.13",
+    "cross-fetch": "^3.0.4",
+    "file-type": "^14.6.1",
+    "fs-extra": "^9.0.1",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "whatwg-mimetype": "^2.3.0"
   },
   "peerDependencies": {
     "lerna": "^3"
-  },
-  "resolutions": {}
+  }
 }
