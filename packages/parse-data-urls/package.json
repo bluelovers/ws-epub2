@@ -1,6 +1,6 @@
 {
   "name": "parse-data-urls",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "homepage": "https://github.com/bluelovers/ws-epub2/tree/master/packages/parse-data-urls#readme",
   "bugs": {
@@ -33,7 +33,6 @@
     "data-urls": "^2.0.0",
     "valid-data-url": "^2.0.0"
   },
-  "devDependencies": {},
   "peerDependencies": {
     "data-urls": "^2.0.0",
     "whatwg-mimetype": "^2.3.0"
