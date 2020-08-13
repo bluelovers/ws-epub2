@@ -19,8 +19,8 @@
     "test": "jest",
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
     "npm:publish": "npm publish",
+    "preversion": "yarn run test",
     "prepublish:lockfile": "npx sync-lockfile .",
-    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
     "postpublish_": "git commit -m \"chore(release): publish\" .",
     "ncu": "npx yarn-tool ncu -u",
     "sort-package-json": "npx yarn-tool sort",
@@ -31,7 +31,7 @@
     "@types/whatwg-mimetype": "*",
     "bluebird": "^3.7.2",
     "data-urls": "^2.0.0",
-    "valid-data-url": "^2.0.0"
+    "valid-data-url": "^3.0.0"
   },
   "peerDependencies": {
     "data-urls": "^2.0.0",
