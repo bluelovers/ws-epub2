@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.8...@node-novel/fetch-file-or-url@1.1.9) (2020-08-13)
+
+**Note:** Version bump only for package @node-novel/fetch-file-or-url
+
+
+
+
+
 ## [1.1.8](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.7...@node-novel/fetch-file-or-url@1.1.8) (2020-06-09)
 
 **Note:** Version bump only for package @node-novel/fetch-file-or-url
