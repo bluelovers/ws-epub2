@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -27,9 +27,10 @@ const worker_threads_1 = require("worker_threads");
 const index_1 = __importStar(require("./index"));
 const bluebird_1 = __importDefault(require("bluebird"));
 const path_1 = require("path");
-exports.imageminBufferWorker = function imageminBufferWorker(oldBuffer, options) {
+const imageminBufferWorker = function imageminBufferWorker(oldBuffer, options) {
     return null;
 };
+exports.imageminBufferWorker = imageminBufferWorker;
 exports.default = exports.imageminBufferWorker;
 if (worker_threads_1.isMainThread) {
     const __worker = (() => {
