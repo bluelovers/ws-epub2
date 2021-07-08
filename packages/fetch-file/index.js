@@ -1,20 +1,18 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchFileOrUrl = void 0;
-const hash_sum_1 = __importDefault(require("hash-sum"));
-const bluebird_1 = __importDefault(require("bluebird"));
+const tslib_1 = require("tslib");
+const hash_sum_1 = (0, tslib_1.__importDefault)(require("hash-sum"));
+const bluebird_1 = (0, tslib_1.__importDefault)(require("bluebird"));
 const file_type_1 = require("file-type");
 const fs_extra_1 = require("fs-extra");
-const cross_fetch_1 = __importDefault(require("cross-fetch"));
+const cross_fetch_1 = (0, tslib_1.__importDefault)(require("cross-fetch"));
 const upath2_1 = require("upath2");
-const logger_1 = __importDefault(require("debug-color2/logger"));
-const worker_1 = __importDefault(require("@node-novel/imagemin/worker"));
+const logger_1 = (0, tslib_1.__importDefault)(require("debug-color2/logger"));
+const worker_1 = (0, tslib_1.__importDefault)(require("@node-novel/imagemin/worker"));
 // @ts-ignore
-const abort_controller_1 = __importDefault(require("abort-controller"));
-const parse_data_urls_1 = __importDefault(require("parse-data-urls"));
+const abort_controller_1 = (0, tslib_1.__importDefault)(require("abort-controller"));
+const parse_data_urls_1 = (0, tslib_1.__importDefault)(require("parse-data-urls"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
@@ -29,13 +27,13 @@ function fetchFileOrUrl(file, options) {
         }
         let is_from_url;
         if (!_file && file.file) {
-            _file = await fs_extra_1.readFile(file.file);
+            _file = await (0, fs_extra_1.readFile)(file.file);
         }
         if (!_file && file.url) {
             /**
              * support data url
              */
-            await parse_data_urls_1.default(file.url)
+            await (0, parse_data_urls_1.default)(file.url)
                 .then(data => {
                 var _a;
                 if (!file.mime && (data === null || data === void 0 ? void 0 : data.mime)) {
@@ -66,7 +64,7 @@ function fetchFileOrUrl(file, options) {
                 timer = setTimeout(() => controller.abort(), fetchOptions.timeout);
                 fetchOptions.signal = controller.signal;
             }
-            _file = await cross_fetch_1.default(file.url, fetchOptions)
+            _file = await (0, cross_fetch_1.default)(file.url, fetchOptions)
                 .then(function (ret) {
                 //console.log(file.name, ret.type, ret.headers);
                 if (!file.mime) {
@@ -82,7 +80,7 @@ function fetchFileOrUrl(file, options) {
                     // @ts-ignore
                     if (!file.name && !file.basename && ret.headers.raw()['content-disposition'][0].match(/filename=(['"])?([^\'"]+)\1/)) {
                         let filename = RegExp.$2;
-                        file.name = upath2_1.basename(filename);
+                        file.name = (0, upath2_1.basename)(filename);
                         //console.log(file.name);
                     }
                 }
@@ -108,7 +106,7 @@ function fetchFileOrUrl(file, options) {
         }
         if (_file && typeof window === 'undefined') {
             const { imageminDebug = true } = options || {};
-            await worker_1.default(_file, {
+            await (0, worker_1.default)(_file, {
                 imageminDebug,
                 ...options,
                 is_from_url,
@@ -130,13 +128,13 @@ function fetchFileOrUrl(file, options) {
             throw e;
         }
         if (file.name && file.ext !== '') {
-            file.ext = file.ext || upath2_1.extname(file.name);
+            file.ext = file.ext || (0, upath2_1.extname)(file.name);
             if (!file.ext) {
                 file.ext = null;
             }
         }
         if (!file.ext || !file.mime) {
-            let data = await file_type_1.fromBuffer(_file);
+            let data = await (0, file_type_1.fromBuffer)(_file);
             if (data) {
                 if (file.ext !== '') {
                     file.ext = file.ext || '.' + data.ext;
@@ -148,7 +146,7 @@ function fetchFileOrUrl(file, options) {
             }
         }
         if (!file.name) {
-            file.name = (file.basename || hash_sum_1.default(file)) + file.ext;
+            file.name = (file.basename || (0, hash_sum_1.default)(file)) + file.ext;
         }
         file.data = _file;
         return file;
