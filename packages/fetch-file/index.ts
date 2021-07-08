@@ -9,8 +9,8 @@ import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
 import console from 'debug-color2/logger';
 import imageminBufferWorker from '@node-novel/imagemin/worker';
-// @ts-ignore
-import AbortController from 'abort-controller';
+import AbortControllerTimer from 'abort-controller-timer';
+
 import parseDataURL from 'parse-data-urls';
 
 export interface IFiles
@@ -96,19 +96,14 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 				fetchOptions.timeout |= 0;
 				if (fetchOptions.timeout <= 0)
 				{
-					fetchOptions.timeout = 30 * 1000;
+					fetchOptions.timeout = 60 * 1000;
 				}
 
-				let timer: NodeJS.Timeout;
+				let controller: AbortControllerTimer;
 
 				if (!fetchOptions.signal)
 				{
-					const controller = new AbortController();
-					timer = setTimeout(
-						() => controller.abort(),
-						fetchOptions.timeout,
-					);
-
+					controller = new AbortControllerTimer(fetchOptions.timeout);
 					fetchOptions.signal = controller.signal;
 				}
 
@@ -172,9 +167,8 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 
 						return null;
 					})
+					.finally(() => controller?.clear?.())
 				;
-
-				timer && clearTimeout(timer);
 			}
 
 			if (_file && typeof window === 'undefined')
@@ -235,7 +229,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 				}
 				else if (file.ext !== '')
 				{
-					file.ext = file.ext || '.unknow';
+					file.ext = file.ext || '.unknow' as const;
 				}
 			}
 

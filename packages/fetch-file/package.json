@@ -23,13 +23,13 @@
   },
   "dependencies": {
     "@node-novel/imagemin": "^1.0.14",
-    "@types/node-fetch": "^2.5.10",
-    "abort-controller": "^3.0.0",
+    "@types/node-fetch": "^2.5.11",
+    "abort-controller-timer": "^1.0.9",
     "debug-color2": "^1.2.3",
     "hash-sum": "^2.0.0",
     "parse-data-urls": "^1.0.7",
     "tslib": "^2.3.0",
-    "upath2": "^3.1.8"
+    "upath2": "^3.1.9"
   },
   "peerDependencies": {
     "bluebird": "^3.7.2",

@@ -10,8 +10,7 @@ const cross_fetch_1 = (0, tslib_1.__importDefault)(require("cross-fetch"));
 const upath2_1 = require("upath2");
 const logger_1 = (0, tslib_1.__importDefault)(require("debug-color2/logger"));
 const worker_1 = (0, tslib_1.__importDefault)(require("@node-novel/imagemin/worker"));
-// @ts-ignore
-const abort_controller_1 = (0, tslib_1.__importDefault)(require("abort-controller"));
+const abort_controller_timer_1 = (0, tslib_1.__importDefault)(require("abort-controller-timer"));
 const parse_data_urls_1 = (0, tslib_1.__importDefault)(require("parse-data-urls"));
 /**
  * 處理附加檔案 本地檔案 > url
@@ -56,12 +55,11 @@ function fetchFileOrUrl(file, options) {
             };
             fetchOptions.timeout |= 0;
             if (fetchOptions.timeout <= 0) {
-                fetchOptions.timeout = 30 * 1000;
+                fetchOptions.timeout = 60 * 1000;
             }
-            let timer;
+            let controller;
             if (!fetchOptions.signal) {
-                const controller = new abort_controller_1.default();
-                timer = setTimeout(() => controller.abort(), fetchOptions.timeout);
+                controller = new abort_controller_timer_1.default(fetchOptions.timeout);
                 fetchOptions.signal = controller.signal;
             }
             _file = await (0, cross_fetch_1.default)(file.url, fetchOptions)
@@ -101,8 +99,8 @@ function fetchFileOrUrl(file, options) {
                 is_from_url = false;
                 err = e;
                 return null;
-            });
-            timer && clearTimeout(timer);
+            })
+                .finally(() => { var _a; return (_a = controller === null || controller === void 0 ? void 0 : controller.clear) === null || _a === void 0 ? void 0 : _a.call(controller); });
         }
         if (_file && typeof window === 'undefined') {
             const { imageminDebug = true } = options || {};
