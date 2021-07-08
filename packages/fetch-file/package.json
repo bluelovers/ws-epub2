@@ -23,18 +23,19 @@
   },
   "dependencies": {
     "@node-novel/imagemin": "^1.0.12",
-    "@types/node-fetch": "^2.5.8",
+    "@types/node-fetch": "^2.5.10",
     "abort-controller": "^3.0.0",
     "debug-color2": "^1.2.3",
     "hash-sum": "^2.0.0",
     "parse-data-urls": "^1.0.5",
-    "upath2": "^3.1.7"
+    "tslib": "^2.3.0",
+    "upath2": "^3.1.8"
   },
   "peerDependencies": {
     "bluebird": "^3.7.2",
-    "cross-fetch": "^3.0.6",
-    "file-type": "^16.2.0",
-    "fs-extra": "^9.1.0"
+    "cross-fetch": "^3.1.4",
+    "file-type": "^16.5.0",
+    "fs-extra": "^10.0.0"
   },
   "publishConfig": {
     "access": "public"

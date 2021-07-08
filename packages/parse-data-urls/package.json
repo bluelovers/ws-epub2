@@ -31,7 +31,8 @@
     "@types/whatwg-mimetype": "*",
     "bluebird": "^3.7.2",
     "data-urls": "^2.0.0",
-    "valid-data-url": "^3.0.1"
+    "tslib": "^2.3.0",
+    "valid-data-url": "^4.0.0"
   },
   "peerDependencies": {
     "data-urls": "^2.0.0",
