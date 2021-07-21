@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.15](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.14...@node-novel/fetch-file-or-url@1.1.15) (2021-07-21)
+
+
+### Features
+
+* 改善錯誤訊息顯示 與 update deps ([27f239d](https://github.com/bluelovers/ws-epub2/commit/27f239d1996d1b41df3afbd426d4c4138114301e))
+
+
+
+
+
 ## [1.1.14](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.13...@node-novel/fetch-file-or-url@1.1.14) (2021-07-11)
 
 **Note:** Version bump only for package @node-novel/fetch-file-or-url
