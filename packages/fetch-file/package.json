@@ -24,8 +24,8 @@
   "dependencies": {
     "@node-novel/imagemin": "^1.0.16",
     "@types/node-fetch": "^2.5.11",
-    "abort-controller-timer": "^1.0.10",
-    "debug-color2": "^1.2.5",
+    "abort-controller-timer": "^1.0.11",
+    "debug-color2": "^1.2.7",
     "hash-sum": "^2.0.0",
     "parse-data-urls": "^1.0.7",
     "tslib": "^2.3.0",
@@ -34,7 +34,7 @@
   "peerDependencies": {
     "bluebird": "^3.7.2",
     "cross-fetch": "^3.1.4",
-    "file-type": "^16.5.1",
+    "file-type": "^16.5.2",
     "fs-extra": "^10.0.0"
   },
   "publishConfig": {

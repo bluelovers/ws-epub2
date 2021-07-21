@@ -30,12 +30,12 @@
   "dependencies": {
     "@types/whatwg-mimetype": "*",
     "bluebird": "^3.7.2",
-    "data-urls": "^2.0.0",
+    "data-urls": "^3.0.0",
     "tslib": "^2.3.0",
     "valid-data-url": "^4.0.0"
   },
   "peerDependencies": {
-    "data-urls": "^2.0.0",
+    "data-urls": "^3.0.0",
     "whatwg-mimetype": "^2.3.0"
   },
   "gitHead": "a379f15d3f5100d6e500985622db8b9d69340278"

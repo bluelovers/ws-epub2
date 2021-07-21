@@ -115,8 +115,17 @@ function fetchFileOrUrl(file, options) {
                 }
             })
                 .catch(function (e) {
-                imageminDebug && logger_1.default.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', e.toString().replace(/^\s+|\s+$/, ''), file);
-                //console.error(e);
+                if (imageminDebug) {
+                    let msg = e;
+                    if (e instanceof Error) {
+                        msg = String(e);
+                    }
+                    if (typeof msg === 'string') {
+                        msg = msg.replace(/^\s+|\s+$/, '');
+                    }
+                    logger_1.default.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', msg, file);
+                    //console.error(e);
+                }
             });
         }
         if (!_file) {
