@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.18](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.16...@node-novel/imagemin@1.0.18) (2021-07-21)
+
+
+### Features
+
+* 改善錯誤訊息顯示 與 update deps ([27f239d](https://github.com/bluelovers/ws-epub2/commit/27f239d1996d1b41df3afbd426d4c4138114301e))
+
+
+
+
+
+## [1.0.17](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.16...@node-novel/imagemin@1.0.17) (2021-07-21)
+
+
+### Features
+
+* 改善錯誤訊息顯示 與 update deps ([27f239d](https://github.com/bluelovers/ws-epub2/commit/27f239d1996d1b41df3afbd426d4c4138114301e))
+
+
+
+
+
 ## [1.0.16](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.15...@node-novel/imagemin@1.0.16) (2021-07-11)
 
 **Note:** Version bump only for package @node-novel/imagemin

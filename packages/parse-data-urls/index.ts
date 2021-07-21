@@ -17,7 +17,7 @@ export interface IParseDataURL
 	/**
 	 * The body property is a Node.js Buffer instance.
 	 */
-	body: Buffer;
+	body: Uint8Array;
 }
 
 export function parseDataURL(url: string)
@@ -28,7 +28,7 @@ export function parseDataURL(url: string)
 
 			const data = _parseDataURL(url) as {
 				mimeType: MIMEType,
-				body: Buffer,
+				body: Uint8Array,
 			};
 
 			const type = data.mimeType.type;

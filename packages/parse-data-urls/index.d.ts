@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import Bluebird from 'bluebird';
 import MIMEType from 'whatwg-mimetype';
 export interface IParseDataURL {
@@ -12,7 +11,7 @@ export interface IParseDataURL {
     /**
      * The body property is a Node.js Buffer instance.
      */
-    body: Buffer;
+    body: Uint8Array;
 }
 export declare function parseDataURL(url: string): Bluebird<IParseDataURL>;
 export default parseDataURL;

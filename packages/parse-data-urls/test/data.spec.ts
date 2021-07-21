@@ -20,6 +20,9 @@ describe('base64', function ()
 			mime: 'image/png',
 			base64: true,
 		});
+
+		expect(Buffer.isBuffer(data.body) || data.body instanceof Uint8Array).toBeTruthy();
+
 		expect(data).toMatchSnapshot();
 
 		await outputFile(join(__dirname, 'temp', 't001.png'), data.body);
@@ -38,6 +41,7 @@ describe('base64', function ()
 			base64: false,
 			charset: 'UTF-8',
 		});
+
 		expect(data).toMatchSnapshot();
 
 	});
