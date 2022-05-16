@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.imageminBufferWorker = void 0;
 const tslib_1 = require("tslib");
 const worker_threads_1 = require("worker_threads");
-const index_1 = (0, tslib_1.__importStar)(require("./index"));
-const bluebird_1 = (0, tslib_1.__importDefault)(require("bluebird"));
+const index_1 = tslib_1.__importStar(require("./index"));
+const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const path_1 = require("path");
 const imageminBufferWorker = function imageminBufferWorker(oldBuffer, options) {
     return null;

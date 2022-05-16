@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.newError = exports.isAllowedBuffer = exports.imageminBuffer = exports.imageminPlugins = exports.tryRequireResolve = void 0;
 const tslib_1 = require("tslib");
-const bluebird_1 = (0, tslib_1.__importDefault)(require("bluebird"));
-const bluebird_cancellation_1 = (0, tslib_1.__importDefault)(require("bluebird-cancellation"));
+const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
+const bluebird_cancellation_1 = tslib_1.__importDefault(require("bluebird-cancellation"));
 const bluebird_2 = require("bluebird");
-const imagemin_1 = (0, tslib_1.__importDefault)(require("imagemin"));
-const logger_1 = (0, tslib_1.__importDefault)(require("debug-color2/logger"));
+const imagemin_1 = tslib_1.__importDefault(require("imagemin"));
+const logger_1 = tslib_1.__importDefault(require("debug-color2/logger"));
 const skipRequireSet = new Set();
 function tryRequireResolve(name) {
     if (!skipRequireSet.has(name)) {

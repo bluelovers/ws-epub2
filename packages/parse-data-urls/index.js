@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseDataURL = void 0;
 const tslib_1 = require("tslib");
-const data_urls_1 = (0, tslib_1.__importDefault)(require("data-urls"));
-const bluebird_1 = (0, tslib_1.__importDefault)(require("bluebird"));
-const valid_data_url_1 = (0, tslib_1.__importDefault)(require("valid-data-url"));
+const data_urls_1 = tslib_1.__importDefault(require("data-urls"));
+const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
+const valid_data_url_1 = tslib_1.__importDefault(require("valid-data-url"));
 function parseDataURL(url) {
     return bluebird_1.default.resolve(url)
         .then((url) => {

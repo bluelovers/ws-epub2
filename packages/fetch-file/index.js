@@ -2,16 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fetchFileOrUrl = void 0;
 const tslib_1 = require("tslib");
-const hash_sum_1 = (0, tslib_1.__importDefault)(require("hash-sum"));
-const bluebird_1 = (0, tslib_1.__importDefault)(require("bluebird"));
+const hash_sum_1 = tslib_1.__importDefault(require("hash-sum"));
+const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const file_type_1 = require("file-type");
 const fs_extra_1 = require("fs-extra");
-const cross_fetch_1 = (0, tslib_1.__importDefault)(require("cross-fetch"));
+const cross_fetch_1 = tslib_1.__importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
-const logger_1 = (0, tslib_1.__importDefault)(require("debug-color2/logger"));
-const worker_1 = (0, tslib_1.__importDefault)(require("@node-novel/imagemin/worker"));
-const abort_controller_timer_1 = (0, tslib_1.__importDefault)(require("abort-controller-timer"));
-const parse_data_urls_1 = (0, tslib_1.__importDefault)(require("parse-data-urls"));
+const logger_1 = tslib_1.__importDefault(require("debug-color2/logger"));
+const worker_1 = tslib_1.__importDefault(require("@node-novel/imagemin/worker"));
+const abort_controller_timer_1 = tslib_1.__importDefault(require("abort-controller-timer"));
+const parse_data_urls_1 = tslib_1.__importDefault(require("parse-data-urls"));
 /**
  * 處理附加檔案 本地檔案 > url
  */
