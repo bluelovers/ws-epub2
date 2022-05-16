@@ -39,6 +39,7 @@ function fetchFileOrUrl(file, options) {
                     file.mime = data.mime;
                 }
                 if (((_a = data === null || data === void 0 ? void 0 : data.body) === null || _a === void 0 ? void 0 : _a.length) > 0) {
+                    // @ts-ignore
                     _file = data.body;
                     is_from_url = true;
                 }
@@ -60,6 +61,7 @@ function fetchFileOrUrl(file, options) {
             let controller;
             if (!fetchOptions.signal) {
                 controller = new abort_controller_timer_1.default(fetchOptions.timeout);
+                // @ts-ignore
                 fetchOptions.signal = controller.signal;
             }
             _file = await (0, cross_fetch_1.default)(file.url, fetchOptions)

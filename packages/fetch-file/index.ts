@@ -75,6 +75,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 
 						if (data?.body?.length > 0)
 						{
+							// @ts-ignore
 							_file = data.body;
 							is_from_url = true;
 						}
@@ -104,6 +105,7 @@ export function fetchFileOrUrl(file: ITSResolvable<IFiles>, options?: IOptions)
 				if (!fetchOptions.signal)
 				{
 					controller = new AbortControllerTimer(fetchOptions.timeout);
+					// @ts-ignore
 					fetchOptions.signal = controller.signal;
 				}
 
