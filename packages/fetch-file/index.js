@@ -10,7 +10,7 @@ const cross_fetch_1 = tslib_1.__importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
 const logger_1 = tslib_1.__importDefault(require("debug-color2/logger"));
 const worker_1 = tslib_1.__importDefault(require("@node-novel/imagemin/worker"));
-const abort_controller_timer_1 = tslib_1.__importDefault(require("abort-controller-timer"));
+const abort_controller_timer_1 = require("abort-controller-timer");
 const parse_data_urls_1 = tslib_1.__importDefault(require("parse-data-urls"));
 /**
  * 處理附加檔案 本地檔案 > url
@@ -60,7 +60,7 @@ function fetchFileOrUrl(file, options) {
             }
             let controller;
             if (!fetchOptions.signal) {
-                controller = new abort_controller_timer_1.default(fetchOptions.timeout);
+                controller = new abort_controller_timer_1.AbortControllerTimer(fetchOptions.timeout);
                 // @ts-ignore
                 fetchOptions.signal = controller.signal;
             }

@@ -8,33 +8,34 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluelovers/ws-epub2.git"
+    "url": "git+https://github.com/bluelovers/ws-epub2.git",
+    "directory": "packages/fetch-file"
   },
   "license": "ISC",
   "author": "bluelovers",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "npm:publish": "npm publish",
-    "preversion": "yarn run test",
-    "prepublish:lockfile": "npx sync-lockfile .",
-    "ncu": "npx yarn-tool ncu -u",
-    "sort-package-json": "npx yarn-tool sort"
+    "coverage": "yarn run test -- --coverage",
+    "test:jest": "jest --passWithNoTests",
+    "test:jest:snapshot": "yarn run test:jest -- -u",
+    "test:snapshot": "yarn run test -- -u",
+    "test:tsd": "ynpx tsd",
+    "preversion": "yarn run test"
   },
   "dependencies": {
     "@node-novel/imagemin": "^1.0.21",
-    "@types/node-fetch": "^2.6.1",
-    "abort-controller-timer": "^1.0.18",
-    "debug-color2": "^1.2.7",
+    "@types/node-fetch": "^2.6.2",
+    "abort-controller-timer": "^1.0.19",
+    "debug-color2": "^1.3.2",
     "hash-sum": "^2.0.0",
     "parse-data-urls": "^1.0.10",
     "tslib": "^2",
-    "upath2": "^3.1.13"
+    "upath2": "^3.1.19"
   },
   "peerDependencies": {
     "bluebird": "^3.7.2",
     "cross-fetch": "^3.1.5",
-    "file-type": "< 17 >= 16.5.3",
+    "file-type": "<17 >=16.5.3",
     "fs-extra": "^10.1.0"
   },
   "publishConfig": {

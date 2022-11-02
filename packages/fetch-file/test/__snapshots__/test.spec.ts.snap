@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test fetch fetch url 1`] = `
-Object {
+{
   "data": Any<Buffer>,
   "ext": ".webp",
   "mime": "image/png",

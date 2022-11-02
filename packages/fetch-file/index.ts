@@ -9,7 +9,7 @@ import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
 import console from 'debug-color2/logger';
 import imageminBufferWorker from '@node-novel/imagemin/worker';
-import AbortControllerTimer from 'abort-controller-timer';
+import { AbortControllerTimer } from 'abort-controller-timer';
 
 import parseDataURL from 'parse-data-urls';
 
