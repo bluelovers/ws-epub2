@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.17](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.16...@node-novel/fetch-file-or-url@1.1.17) (2022-11-02)
+
+
+
+### 📌　Dependencies
+
+* update deps ([cf8f764](https://github.com/bluelovers/ws-epub2/commit/cf8f7647cdf853ec57c434d07466e2c15bdecdcd))
+
+
+### 🔖　Miscellaneous
+
+* . ([8cca38c](https://github.com/bluelovers/ws-epub2/commit/8cca38cd284956eaeb0e6d213d0a674ad9bd3252))
+
+
+
 ## [1.1.16](https://github.com/bluelovers/ws-epub2/compare/@node-novel/fetch-file-or-url@1.1.15...@node-novel/fetch-file-or-url@1.1.16) (2022-05-16)
 
 

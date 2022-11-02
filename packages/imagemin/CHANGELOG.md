@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.22](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.21...@node-novel/imagemin@1.0.22) (2022-11-02)
+
+
+
+### 📌　Dependencies
+
+* update deps ([cf8f764](https://github.com/bluelovers/ws-epub2/commit/cf8f7647cdf853ec57c434d07466e2c15bdecdcd))
+
+
+### 🔖　Miscellaneous
+
+* . ([8cca38c](https://github.com/bluelovers/ws-epub2/commit/8cca38cd284956eaeb0e6d213d0a674ad9bd3252))
+
+
+
 ## [1.0.21](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.19...@node-novel/imagemin@1.0.21) (2022-05-16)
 
 **Note:** Version bump only for package @node-novel/imagemin
