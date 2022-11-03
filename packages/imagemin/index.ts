@@ -8,7 +8,7 @@ import * as imageminOptipng from 'imagemin-optipng';
 import * as imageminWebp from 'imagemin-webp';
 import * as imageminMozjpeg from 'imagemin-mozjpeg';
 import { ITSResolvable } from 'ts-type';
-import console from 'debug-color2/logger';
+import { consoleLogger as console } from 'debug-color2/logger';
 
 export interface IOptions
 {

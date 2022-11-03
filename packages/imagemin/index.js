@@ -6,7 +6,7 @@ const bluebird_1 = tslib_1.__importDefault(require("bluebird"));
 const bluebird_cancellation_1 = tslib_1.__importDefault(require("bluebird-cancellation"));
 const bluebird_2 = require("bluebird");
 const imagemin_1 = tslib_1.__importDefault(require("imagemin"));
-const logger_1 = tslib_1.__importDefault(require("debug-color2/logger"));
+const logger_1 = require("debug-color2/logger");
 const skipRequireSet = new Set();
 function tryRequireResolve(name) {
     if (!skipRequireSet.has(name)) {
@@ -57,7 +57,7 @@ function imageminPlugins(options) {
             }
             catch (e) {
                 skipRequireSet.add(name);
-                (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(e);
+                (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.consoleLogger.error(e);
             }
         }
     });
@@ -79,7 +79,7 @@ function imageminBuffer(oldBuffer, options) {
         return bluebird_1.default.resolve(pc)
             .timeout(imageminTimeout)
             .tapCatch(bluebird_2.TimeoutError, (e) => {
-            (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.default.error(`imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`);
+            (options === null || options === void 0 ? void 0 : options.imageminDebug) && logger_1.consoleLogger.error(`imagemin 處理時間過久 ${imageminTimeout}ms 放棄壓縮此圖片`);
             pc.cancel();
         });
     })

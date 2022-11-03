@@ -8,7 +8,7 @@ const file_type_1 = require("file-type");
 const fs_extra_1 = require("fs-extra");
 const cross_fetch_1 = tslib_1.__importDefault(require("cross-fetch"));
 const upath2_1 = require("upath2");
-const logger_1 = tslib_1.__importDefault(require("debug-color2/logger"));
+const logger_1 = require("debug-color2/logger");
 const worker_1 = tslib_1.__importDefault(require("@node-novel/imagemin/worker"));
 const abort_controller_timer_1 = require("abort-controller-timer");
 const parse_data_urls_1 = tslib_1.__importDefault(require("parse-data-urls"));
@@ -125,7 +125,7 @@ function fetchFileOrUrl(file, options) {
                     if (typeof msg === 'string') {
                         msg = msg.replace(/^\s+|\s+$/, '');
                     }
-                    logger_1.default.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', msg, file);
+                    logger_1.consoleLogger.error('[ERROR] imagemin 發生錯誤，本次將忽略處理此檔案', msg, file);
                     //console.error(e);
                 }
             });

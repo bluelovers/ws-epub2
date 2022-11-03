@@ -7,7 +7,7 @@ import { basename, extname } from 'upath2';
 import { RequestInit as IRequestInitNodeFetch } from 'node-fetch';
 import imageminBuffer, { IOptions as IOptions2 } from '@node-novel/imagemin';
 import { ITSResolvable } from 'ts-type';
-import console from 'debug-color2/logger';
+import { consoleLogger as console } from 'debug-color2/logger';
 import imageminBufferWorker from '@node-novel/imagemin/worker';
 import { AbortControllerTimer } from 'abort-controller-timer';
 
