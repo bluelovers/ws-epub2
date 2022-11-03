@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.23](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.22...@node-novel/imagemin@1.0.23) (2022-11-03)
+
+
+
+### 🔖　Miscellaneous
+
+* . ([873ec6c](https://github.com/bluelovers/ws-epub2/commit/873ec6c1fbea4c2eef5990226869de38dfdb3e0d))
+
+
+
 ## [1.0.22](https://github.com/bluelovers/ws-epub2/compare/@node-novel/imagemin@1.0.21...@node-novel/imagemin@1.0.22) (2022-11-02)
 
 
